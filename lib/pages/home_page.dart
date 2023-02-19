@@ -159,7 +159,12 @@ class DurationSetter extends StatelessWidget {
       elevation: 16.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
       child: Padding(
-        padding: const EdgeInsets.all(6.0),
+        padding: const EdgeInsets.only(
+          top: 18.0,
+          bottom: 6.0,
+          left: 6.0,
+          right: 6.0,
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

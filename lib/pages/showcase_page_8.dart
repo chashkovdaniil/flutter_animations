@@ -112,7 +112,11 @@ class _AnimatedPulseState extends State<AnimatedPulse>
                 scale: innerDownscale,
                 child: widget.child,
               ),
-            )
+            ),
+            // ScaleTransition(
+            //   scale: MultiplyAnimation(innerUpscale, innerDownscale),
+            //   child: widget.child,
+            // ),
           ],
         ),
         Text(

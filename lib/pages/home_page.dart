@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:shmr_flutter_animations/pages/showcase_page_13.dart';
 
 import '../../strings.dart';
 import 'common/showcase_config.dart';
@@ -35,6 +36,7 @@ class HomePage extends StatelessWidget {
     'BouncyPane': ShowcaseBouncyPane(),
     'Hero': ShowcaseHero(),
     'MaterialTransitions': ShowcaseMaterialTransitions(),
+    'TweenSequence': ShowcaseTweenSequence(),
   };
 
   /// all showcases subtitles

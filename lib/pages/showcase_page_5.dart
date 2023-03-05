@@ -17,23 +17,66 @@ class ShowcaseAnimatedController extends StatefulWidget {
 
 class _ShowcaseAnimatedControllerState extends State<ShowcaseAnimatedController>
     with SingleTickerProviderStateMixin {
-  late final controller = AnimationController(vsync: this);
+  late final controller = AnimationController(
+    vsync: this,
+    animationBehavior: AnimationBehavior.preserve,
+  );
+
   late var value = controller.value.toString();
   late var status = describeEnum(controller.status);
+
+  /// Пример с кривой
+  // late final curvedAnimation = CurvedAnimation(
+  //   parent: controller,
+  //   curve: Curves.elasticOut,
+  // );
+
+  /// Пример с Tween
+  // late final tween = ColorTween(
+  //   begin: Colors.red,
+  //   end: Colors.blue,
+  // ).animate(controller);
 
   @override
   void initState() {
     super.initState();
-    controller.addListener(() {
-      setState(() {
-        value = controller.value.toString();
-      });
-    });
-    controller.addStatusListener((newStatus) {
-      setState(() {
-        status = describeEnum(newStatus);
-      });
-    });
+
+    /// Начальный пример
+    // controller.addListener(() {
+    //   setState(() {
+    //     value = controller.value.toString();
+    //   });
+    // });
+    // controller.addStatusListener((newStatus) {
+    //   setState(() {
+    //     status = describeEnum(newStatus);
+    //   });
+    // });
+
+    /// Пример с curved
+    // curvedAnimation.addListener(() {
+    //   setState(() {
+    //     value = curvedAnimation.value.toString();
+    //   });
+    // });
+    //
+    // curvedAnimation.addStatusListener((newStatus) {
+    //   setState(() {
+    //     status = describeEnum(newStatus);
+    //   });
+    // });
+
+    /// Пример с Tween
+    // tween.addListener(() {
+    //   setState(() {
+    //     value = tween.value.toString();
+    //   });
+    // });
+    // tween.addStatusListener((newStatus) {
+    //   setState(() {
+    //     status = describeEnum(newStatus);
+    //   });
+    // });
   }
 
   @override
@@ -50,6 +93,8 @@ class _ShowcaseAnimatedControllerState extends State<ShowcaseAnimatedController>
 
   void onRun() {
     controller.forward(from: 0.0);
+    // controller.repeat();
+    // controller.repeat(reverse: true);
   }
 
   @override
@@ -76,17 +121,33 @@ class _ShowcaseAnimatedControllerState extends State<ShowcaseAnimatedController>
               ),
             ),
           ),
-          // Expanded(
-          //   child: Center(
-          //     child: ScaleTransition(
-          //       scale: curve,
-          //       child: const Icon(
-          //         Icons.flutter_dash,
-          //         size: 128.0,
-          //       ),
-          //     ),
-          //   ),
-          // ),
+          Expanded(
+            child: Center(
+              child: ScaleTransition(
+                /// Простой c Curved
+                // scale: curvedAnimation,
+                scale: controller,
+
+                /// Простой пример
+                child: const Icon(
+                  Icons.flutter_dash,
+                  size: 128.0,
+                ),
+
+                /// Пример с ColorTween
+                // child: AnimatedBuilder(
+                //   animation: tween,
+                //   builder: (context, child) {
+                //     return Icon(
+                //       Icons.flutter_dash,
+                //       size: 128.0,
+                //       color: tween.value,
+                //     );
+                //   },
+                // ),
+              ),
+            ),
+          ),
         ],
       ),
     );

@@ -28,14 +28,14 @@ class _ShowcaseAnimatedControllerState extends State<ShowcaseAnimatedController>
   /// Пример с кривой
   // late final curvedAnimation = CurvedAnimation(
   //   parent: controller,
-  //   curve: Curves.elasticOut,
+  //   curve: Curves.elasticInOut,
   // );
 
   /// Пример с Tween
-  // late final tween = ColorTween(
-  //   begin: Colors.red,
-  //   end: Colors.blue,
-  // ).animate(controller);
+  late final tween = ColorTween(
+    begin: Colors.red,
+    end: Colors.blue,
+  ).animate(controller);
 
   @override
   void initState() {
@@ -67,16 +67,16 @@ class _ShowcaseAnimatedControllerState extends State<ShowcaseAnimatedController>
     // });
 
     /// Пример с Tween
-    // tween.addListener(() {
-    //   setState(() {
-    //     value = tween.value.toString();
-    //   });
-    // });
-    // tween.addStatusListener((newStatus) {
-    //   setState(() {
-    //     status = describeEnum(newStatus);
-    //   });
-    // });
+    tween.addListener(() {
+      setState(() {
+        value = tween.value.toString();
+      });
+    });
+    tween.addStatusListener((newStatus) {
+      setState(() {
+        status = describeEnum(newStatus);
+      });
+    });
   }
 
   @override
@@ -129,10 +129,13 @@ class _ShowcaseAnimatedControllerState extends State<ShowcaseAnimatedController>
                 scale: controller,
 
                 /// Простой пример
-                child: const Icon(
-                  Icons.flutter_dash,
-                  size: 128.0,
-                ),
+                // child: Icon(
+                //   Icons.flutter_dash,
+                //   size: 128.0,
+                //
+                //   /// ColorTween
+                //   color: tween.value,
+                // ),
 
                 /// Пример с ColorTween
                 // child: AnimatedBuilder(

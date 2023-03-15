@@ -99,16 +99,16 @@ class _AnimatedVisibilityState extends State<AnimatedVisibility>
 
   @override
   Widget build(BuildContext context) {
-    return IgnorePointer(
-      ignoring: !widget.isVisible,
-      child: ScaleTransition(
-        scale: animation,
-        child: FadeTransition(
-          opacity: animation,
-          child: widget.child,
-        ),
-      ),
-    );
+    // return IgnorePointer(
+    //   ignoring: !widget.isVisible,
+    //   child: ScaleTransition(
+    //     scale: animation,
+    //     child: FadeTransition(
+    //       opacity: animation,
+    //       child: widget.child,
+    //     ),
+    //   ),
+    // );
 
     // return IgnorePointer(
     //   ignoring: !widget.isVisible,
@@ -123,13 +123,13 @@ class _AnimatedVisibilityState extends State<AnimatedVisibility>
     //   ),
     // );
 
-    // return IgnorePointer(
-    //   ignoring: !widget.isVisible,
-    //   child: CircleClipTransition(
-    //     clip: animation,
-    //     child: widget.child,
-    //   ),
-    // );
+    return IgnorePointer(
+      ignoring: !widget.isVisible,
+      child: CircleClipTransition(
+        clip: animation,
+        child: widget.child,
+      ),
+    );
   }
 }
 

@@ -31,7 +31,12 @@ class LovedWords extends StatefulWidget {
 class _LovedWordsState extends State<LovedWords>
     with SingleTickerProviderStateMixin {
   final strings = <String>['Будь счастлив!', 'Улыбайся!', '❤️'];
+
+  /// index отображаемой строки
   int stringIndex = 0;
+
+  /// служит для того, чтобы переключать на следующий текст,
+  /// если анимация выполняется заново
   double max = 0.0;
 
   late final AnimationController controller;
@@ -43,6 +48,8 @@ class _LovedWordsState extends State<LovedWords>
     super.initState();
     controller = AnimationController(vsync: this);
 
+    /// Здесь следим за значением контроллера
+    /// Если начался новый цикл, то мы просто переключаемся на другое слово
     controller.addListener(() {
       if (controller.value >= max) {
         max = controller.value;
@@ -112,23 +119,21 @@ class _LovedWordsState extends State<LovedWords>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        FadeTransition(
-          opacity: animationFade,
-          child: SlideTransition(
-            position: animationSlide,
-            child: Text(
-              strings[stringIndex],
-              textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .displayMedium
-                  ?.copyWith(color: Colors.black),
-            ),
+    return Center(
+      child: FadeTransition(
+        opacity: animationFade,
+        child: SlideTransition(
+          position: animationSlide,
+          child: Text(
+            strings[stringIndex],
+            textAlign: TextAlign.center,
+            style: Theme.of(context)
+                .textTheme
+                .displayMedium
+                ?.copyWith(color: Colors.black),
           ),
         ),
-      ],
+      ),
     );
   }
 

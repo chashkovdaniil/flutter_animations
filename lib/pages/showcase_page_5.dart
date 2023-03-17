@@ -32,26 +32,26 @@ class _ShowcaseAnimatedControllerState extends State<ShowcaseAnimatedController>
   // );
 
   /// Пример с Tween
-  late final tween = ColorTween(
-    begin: Colors.red,
-    end: Colors.blue,
-  ).animate(controller);
+  // late final tween = ColorTween(
+  //   begin: Colors.red,
+  //   end: Colors.blue,
+  // ).animate(controller);
 
   @override
   void initState() {
     super.initState();
 
     /// Начальный пример
-    // controller.addListener(() {
-    //   setState(() {
-    //     value = controller.value.toString();
-    //   });
-    // });
-    // controller.addStatusListener((newStatus) {
-    //   setState(() {
-    //     status = describeEnum(newStatus);
-    //   });
-    // });
+    controller.addListener(() {
+      setState(() {
+        value = controller.value.toString();
+      });
+    });
+    controller.addStatusListener((newStatus) {
+      setState(() {
+        status = describeEnum(newStatus);
+      });
+    });
 
     /// Пример с curved
     // curvedAnimation.addListener(() {
@@ -67,16 +67,16 @@ class _ShowcaseAnimatedControllerState extends State<ShowcaseAnimatedController>
     // });
 
     /// Пример с Tween
-    tween.addListener(() {
-      setState(() {
-        value = tween.value.toString();
-      });
-    });
-    tween.addStatusListener((newStatus) {
-      setState(() {
-        status = describeEnum(newStatus);
-      });
-    });
+    // tween.addListener(() {
+    //   setState(() {
+    //     value = tween.value.toString();
+    //   });
+    // });
+    // tween.addStatusListener((newStatus) {
+    //   setState(() {
+    //     status = describeEnum(newStatus);
+    //   });
+    // });
   }
 
   @override
@@ -127,27 +127,16 @@ class _ShowcaseAnimatedControllerState extends State<ShowcaseAnimatedController>
                 /// Простой c Curved
                 // scale: curvedAnimation,
                 scale: controller,
+                // scale: tween,
 
                 /// Простой пример
-                // child: Icon(
-                //   Icons.flutter_dash,
-                //   size: 128.0,
-                //
-                //   /// ColorTween
-                //   color: tween.value,
-                // ),
-
-                /// Пример с ColorTween
-                // child: AnimatedBuilder(
-                //   animation: tween,
-                //   builder: (context, child) {
-                //     return Icon(
-                //       Icons.flutter_dash,
-                //       size: 128.0,
-                //       color: tween.value,
-                //     );
-                //   },
-                // ),
+                child: Icon(
+                  Icons.flutter_dash,
+                  size: 128.0,
+                  //
+                  //   /// ColorTween
+                  // color: tween.value,
+                ),
               ),
             ),
           ),

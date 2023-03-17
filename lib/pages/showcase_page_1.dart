@@ -50,14 +50,12 @@ class _ShowcaseAnimatedContainerState extends State<ShowcaseAnimatedContainer> {
                     spreadRadius: 3.0,
                   ),
                 ],
-                // borderRadius: BorderRadius.circular(50),
-                shape: BoxShape.circle,
+                borderRadius: BorderRadius.circular(50),
               )
             : BoxDecoration(
                 color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(50),
                 // borderRadius: BorderRadius.circular(0),
-                shape: BoxShape.circle,
-                // shape: BoxShape.rectangle,
               ),
         child: Center(
           child: Text(
